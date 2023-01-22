@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Input, Label } from './base.styled';
 
-export const InerContainer = styled.div`
+export const InnerContainer = styled.div`
 	height: 100%;
 	position: relative;
 	margin-inline-start: 16px;
@@ -19,7 +19,6 @@ export const TextFilledContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	padding-block: 8px;
-	padding-inline: 4px;
 	gap: 4px;
 	border: none;
 	border-radius: 4px 4px 0px 0px;
