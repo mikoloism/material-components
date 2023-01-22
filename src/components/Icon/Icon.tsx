@@ -10,10 +10,17 @@ type Props = {
 	kind?: IconKindType;
 } & ElementProps;
 
-export default function IconComponent({ icon, kind }: Props): JSX.Element {
+export default function IconComponent(props: Props): JSX.Element {
+	const { icon, kind, grade, isFill, opticalSize, weight } = props;
 	const iconName: string = normalizeIconSymbols(icon);
+
 	return (
-		<IconElement className={`material-symbols-${kind}`}>
+		<IconElement
+			className={`material-symbols-${kind}`}
+			grade={grade}
+			isFill={isFill}
+			opticalSize={opticalSize}
+			weight={weight}>
 			{iconName}
 		</IconElement>
 	);
