@@ -1,4 +1,5 @@
-import type { IconSymbolType, IconKindType } from './types';
+import { IconElement, type ElementProps } from './Element';
+import type { IconKindType, IconSymbolType } from './types';
 
 function normalizeIconSymbols(symbol: IconSymbolType): string {
 	return symbol.replace(/-/g, '_');
@@ -7,10 +8,22 @@ function normalizeIconSymbols(symbol: IconSymbolType): string {
 type Props = {
 	icon: IconSymbolType;
 	kind?: IconKindType;
-};
-export default function IconComponent({ icon, kind }: Props): JSX.Element {
+} & ElementProps;
+
+export default function IconComponent(props: Props): JSX.Element {
+	const { icon, kind, grade, isFill, opticalSize, weight } = props;
 	const iconName: string = normalizeIconSymbols(icon);
-	return <span className={`material-symbols-${kind}`}>{iconName}</span>;
+
+	return (
+		<IconElement
+			className={`material-symbols-${kind}`}
+			grade={grade}
+			isFill={isFill}
+			opticalSize={opticalSize}
+			weight={weight}>
+			{iconName}
+		</IconElement>
+	);
 }
 
 const defaultProps: Omit<Props, 'icon'> = { kind: 'outlined' };
